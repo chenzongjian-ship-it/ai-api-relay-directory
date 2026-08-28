@@ -1,0 +1,12 @@
+# The workflow's run: block is a bash script executed on ubuntu-latest, where
+# CRLF endings fail with "$'\r': command not found". core.autocrlf=true is set
+# system-wide on the maintainer's machine, so pin these to LF explicitly rather
+# than relying on it staying unset.
+*.yml text eol=lf
+*.yaml text eol=lf
+*.mjs text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+.gitignore text eol=lf
+LICENSE text eol=lf

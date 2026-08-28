@@ -1,0 +1,59 @@
+name: Update rate table
+
+# The repo is a mirror of the directory, so the table is rebuilt from
+# /api/public rather than edited by hand. Nothing here touches affiliate
+# links: the script only reads the public API.
+on:
+  schedule:
+    # 22:00 UTC = 06:00 Asia/Shanghai. GitHub delays scheduled runs under
+    # load, so treat the time as approximate.
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# A delayed nightly run must never race a manual one onto the same branch.
+concurrency:
+  group: update-readme
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+
+      # The script retries the API and refuses to write an empty table, so a
+      # failure here means the directory is genuinely unreachable. Letting the
+      # job fail is deliberate: a silent skip would hide a broken site.
+      - name: Regenerate tables from the live directory
+        run: node scripts/build-readme.mjs
+
+      - name: Commit only when the table actually changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- README.md README.en.md; then
+            echo "No rate changes today." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          {
+            echo "### Rate table updated"
+            echo
+            echo '```diff'
+            git diff --unified=0 -- README.md | grep -E '^[+-]\|' | head -40 || true
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md README.en.md
+          git commit -m "chore: sync rate table $(TZ=Asia/Shanghai date +%F)"
+          git push

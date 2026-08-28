@@ -1,0 +1,13 @@
+{
+  "name": "zongjie-nav-directory",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Auto-synced rate comparison table for AI API relay providers.",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/build-readme.mjs"
+  }
+}
