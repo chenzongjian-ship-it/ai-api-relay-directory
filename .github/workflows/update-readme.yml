@@ -36,24 +36,37 @@ jobs:
       - name: Regenerate tables from the live directory
         run: node scripts/build-readme.mjs
 
-      - name: Commit only when the table actually changed
+      - name: Commit only when something changed
         run: |
           set -euo pipefail
           if git diff --quiet -- README.md README.en.md; then
-            echo "No rate changes today." >> "$GITHUB_STEP_SUMMARY"
+            echo "No changes at all." >> "$GITHUB_STEP_SUMMARY"
             exit 0
           fi
 
-          {
-            echo "### Rate table updated"
-            echo
-            echo '```diff'
-            git diff --unified=0 -- README.md | grep -E '^[+-]\|' | head -40 || true
-            echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
+          # The tables carry a sync date, so a run with no rate movement still
+          # produces a diff. Count changed table rows to tell a real rate change
+          # from a bare timestamp bump, and label the commit for what it is.
+          rows=$(git diff --unified=0 -- README.md | grep -cE '^[+-]\|' || true)
+
+          if [ "$rows" -gt 0 ]; then
+            message="chore: sync rate table $(TZ=Asia/Shanghai date +%F)"
+            {
+              echo "### Rate table changed"
+              echo
+              echo '```diff'
+              # head closes the pipe early on a large diff, and the SIGPIPE that
+              # gives grep would fail the step under pipefail.
+              git diff --unified=0 -- README.md | grep -E '^[+-]\|' | head -40 || true
+              echo '```'
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            message="chore: refresh sync date $(TZ=Asia/Shanghai date +%F)"
+            echo "No rate movement; refreshed the sync date only." >> "$GITHUB_STEP_SUMMARY"
+          fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md README.en.md
-          git commit -m "chore: sync rate table $(TZ=Asia/Shanghai date +%F)"
+          git commit -m "$message"
           git push
