@@ -1,0 +1,100 @@
+{
+  "counts": {
+    "published": 13,
+    "public_benefit": 3,
+    "checkin": 4
+  },
+  "stations": [
+    {
+      "slug": "apxrelay",
+      "name": "ApxRelay",
+      "multiplier": "0.20x",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "ctai",
+      "name": "CTAI",
+      "multiplier": "0.10x",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "gorouter",
+      "name": "GoRouter",
+      "multiplier": "0.2x",
+      "publicBenefit": true,
+      "supportsCheckin": true
+    },
+    {
+      "slug": "grox",
+      "name": "Grox",
+      "multiplier": "2.0x",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "hubway",
+      "name": "HUBWAY",
+      "multiplier": "0.06x",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "jianzhile",
+      "name": "简直了",
+      "multiplier": "0.1x",
+      "publicBenefit": true,
+      "supportsCheckin": true
+    },
+    {
+      "slug": "orbelis",
+      "name": "Orbelis",
+      "multiplier": "0.08x",
+      "publicBenefit": false,
+      "supportsCheckin": true
+    },
+    {
+      "slug": "strait",
+      "name": "strait",
+      "multiplier": "0.08",
+      "publicBenefit": false,
+      "supportsCheckin": true
+    },
+    {
+      "slug": "tabiai",
+      "name": "TaBiAI",
+      "multiplier": "1.0x",
+      "publicBenefit": true,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "true-sota",
+      "name": "TrueSOTA",
+      "multiplier": "0.35",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "vc",
+      "name": "VC",
+      "multiplier": "0.08",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "yunzhou",
+      "name": "云舟",
+      "multiplier": "0.06x",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    },
+    {
+      "slug": "zai-abyss",
+      "name": "ZAI-Abyss",
+      "multiplier": "0.08x",
+      "publicBenefit": false,
+      "supportsCheckin": false
+    }
+  ]
+}

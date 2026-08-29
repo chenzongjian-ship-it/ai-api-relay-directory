@@ -2,7 +2,7 @@
 
 **中文** · [English](README.en.md)
 
-[![stations](https://img.shields.io/badge/stations-13-2563eb)](https://zongjie-nav-pages.pages.dev) [![free tier](https://img.shields.io/badge/free%20tier-3-16a34a)](https://zongjie-nav-pages.pages.dev) [![updated](https://img.shields.io/badge/updated-2026--08--28-6366f1)](https://zongjie-nav-pages.pages.dev)
+[![stations](https://img.shields.io/badge/stations-13-2563eb)](https://zongjie-nav-pages.pages.dev) [![free tier](https://img.shields.io/badge/free%20tier-3-16a34a)](https://zongjie-nav-pages.pages.dev) [![updated](https://img.shields.io/badge/updated-2026--08--29-6366f1)](https://zongjie-nav-pages.pages.dev)
 
 收录 **13** 个 AI API 中转站的参考倍率、模型支持与签到情况，其中 3 个公益站、4 个支持签到。数据每日自动同步自[导航站](https://zongjie-nav-pages.pages.dev)。
 
@@ -60,5 +60,5 @@
 
 ---
 
-> 本表由 [`scripts/build-readme.mjs`](scripts/build-readme.mjs) 自动生成 · 数据快照 2026-08-28 · 共 13 个站点
+> 本表由 [`scripts/build-readme.mjs`](scripts/build-readme.mjs) 自动生成 · 数据快照 2026-08-29 · 共 13 个站点
 > 倍率波动较快，注册前请以各中转站页面为准。

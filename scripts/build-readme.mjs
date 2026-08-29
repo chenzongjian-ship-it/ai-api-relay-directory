@@ -4,7 +4,7 @@
 // number here comes from /api/public, so the table cannot drift from the site.
 // Affiliate URLs are deliberately never fetched or written -- the repo links to
 // the directory, and the directory owns attribution via its own /go/<slug>.
-import { writeFileSync } from "node:fs";
+import { mkdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -279,6 +279,35 @@ function renderReadme(locale, { counts, stations, settings }) {
   ].join("\n");
 }
 
+// The snapshot is the machine-readable half of this mirror: build-broadcast.mjs
+// diffs two committed revisions of it to find real rate movement. It is written
+// from the same fetch as the tables, so the tables, the snapshot and the site
+// can never disagree.
+//
+// It deliberately carries NO generated-at timestamp and only the fields the
+// broadcast reports on. Any volatile field would make the file differ on every
+// run and destroy its only job: answering "did anything actually change?".
+function renderSnapshot({ counts, stations }) {
+  const rows = [...stations]
+    .sort((a, b) => String(a.slug).localeCompare(String(b.slug)))
+    .map((station) => ({
+      slug: String(station.slug ?? ""),
+      name: String(station.name ?? ""),
+      multiplier: String(station.multiplier ?? ""),
+      publicBenefit: station.publicBenefit === true,
+      supportsCheckin: station.supportsCheckin === true,
+    }));
+  const snapshot = {
+    counts: {
+      published: counts.published,
+      public_benefit: counts.public_benefit,
+      checkin: counts.checkin,
+    },
+    stations: rows,
+  };
+  return `${JSON.stringify(snapshot, null, 2)}\n`;
+}
+
 const directory = await loadDirectory();
 const written = [];
 for (const locale of ["zh", "en"]) {
@@ -287,6 +316,13 @@ for (const locale of ["zh", "en"]) {
   writeFileSync(target, body, "utf8");
   written.push({ locale, file: COPY[locale].file, bytes: Buffer.byteLength(body, "utf8") });
 }
+
+const snapshotDir = path.join(rootDir, "data");
+mkdirSync(snapshotDir, { recursive: true });
+const snapshotPath = path.join(snapshotDir, "stations.json");
+const snapshotBody = renderSnapshot(directory);
+writeFileSync(snapshotPath, snapshotBody, "utf8");
+written.push({ locale: "-", file: "data/stations.json", bytes: Buffer.byteLength(snapshotBody, "utf8") });
 
 console.log(JSON.stringify({
   api: API,
