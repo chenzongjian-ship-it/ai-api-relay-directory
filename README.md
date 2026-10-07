@@ -21,6 +21,7 @@
 | **VC** | `sub.vcnovb.cn` | 0.08 | ✅ | • | ✅ | — | — | API 网关, 模型多, 稳定好 |
 | **ZAI-Abyss** | `api.060913.xyz` | 0.08x | ✅ | • | ✅ | — | — | 模型多, 低倍率, 有生图分组 |
 | **简直了** ★ | `jianzhile.vip` | 0.1x | ✅ | • | — | ✅ | — | New API, 可注册, 公益站公告 |
+| **DSH API** | `api.dshapi.icu` | 0.08x | ✅ | • | — | — | OpenAI, Claude, Gemini, DeepSeek, GLM, Kimi, MiniMax | 双协议兼容, 国模分组 0.08x, QQ 邮箱注册, 按量计费 |
 | **CTAI** | `chengtingkj.org` | 0.10x | ✅ | • | ✅ | — | — | API 服务, 在线文档, 需登录 |
 | **ApxRelay** | `apxrelay.com` | 0.20x | ✅ | • | — | — | — | 纯血, 不降智, 供应稳, 企业级 |
 | **GoRouter** ★ | `gorouter.app` | 0.2x | — | • | — | ✅ | — | API 路由, 主页待核验 |
