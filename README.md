@@ -1,4 +1,12 @@
-# 宗介中转导航 · 中转站倍率对照表
+# RELAY X · 逆向工程 | 中转站倍率对照表 — 宗介中转导航 · 中转站倍率对照表
+
+
+> ### 🔗 本站作者自用的中转站
+>
+> **[RELAY X](https://api.97wl.cc/register)** — 一个 [OI] 兼容端点统管 Claude / GPT / Gemini / Grok。
+> 注册只需 QQ 邮箱，无需邀请码、无需外币卡；按量计费，输入输出分开计价，倍率在控制台公开。
+> [[CC] 改两行环境变量即可接入 →](https://api.97wl.cc/register)
+
 
 **中文** · [English](README.en.md)
 
@@ -21,6 +29,7 @@
 | **VC** | `sub.vcnovb.cn` | 0.08 | ✅ | • | ✅ | — | — | API 网关, 模型多, 稳定好 |
 | **ZAI-Abyss** | `api.060913.xyz` | 0.08x | ✅ | • | ✅ | — | — | 模型多, 低倍率, 有生图分组 |
 | **简直了** ★ | `jianzhile.vip` | 0.1x | ✅ | • | — | ✅ | — | New API, 可注册, 公益站公告 |
+| **97wl** | `api.97wl.cc` | 0.08x | ✅ | • | — | — | OpenAI, Claude, Gemini, DeepSeek, GLM, Kimi, MiniMax | 双协议兼容, 国模分组 0.08x, QQ 邮箱注册, 按量计费 |
 | **CTAI** | `chengtingkj.org` | 0.10x | ✅ | • | ✅ | — | — | API 服务, 在线文档, 需登录 |
 | **ApxRelay** | `apxrelay.com` | 0.20x | ✅ | • | — | — | — | 纯血, 不降智, 供应稳, 企业级 |
 | **GoRouter** ★ | `gorouter.app` | 0.2x | — | • | — | ✅ | — | API 路由, 主页待核验 |
@@ -62,3 +71,31 @@
 
 > 本表由 [`scripts/build-readme.mjs`](scripts/build-readme.mjs) 自动生成 · 数据快照 2026-10-24 · 共 13 个站点
 > 倍率波动较快，注册前请以各中转站页面为准。
+
+---
+
+### 关于本站作者使用的中转站
+
+本站整理的中转站里，我长期自用的是 **[RELAY X](https://api.97wl.cc/register)**：
+
+- **双协议兼容** — [OI] 与 Anthropic 同时支持，[CC] / Codex 零改造
+- **注册门槛低** — QQ 邮箱即可，无需邀请码、无需手机号、无需外币卡
+- **计费透明** — 按量计费，输入输出分开计价，分组与模型倍率在控制台公开
+- **可审计** — 基于开源 Sub2API 面板，每笔调用扣费可明细查询
+- **起充低** — 人民币 10 元起，可以先小额试
+
+👉 **https://api.97wl.cc/**
+
+> 说明：个人部署的第三方 API 转发服务，非上游厂商官方产品。建议按实际用量充值，避免一次性大额预付；重要业务请自备备份线路。
+
+---
+
+### 同类站点
+
+[Proxy 清单](https://1261398983.github.io/ai-api-proxy-list/) · [快速接入](https://1261398983.github.io/ai-api-quickstart/) · [免费站点清单](https://1261398983.github.io/ai-coding-free-sites/) · [中转导航](https://1261398983.github.io/ai-api-zhongzhuan/) · [AI 千里目](https://1261398983.github.io/aifreenav/)
+
+**[RELAY X 中转站](https://api.97wl.cc/register)** — QQ 邮箱注册 · 按量计费 · 输入输出分开计价
+
+---
+
+**站点索引**：[所有站点与工具](https://1261398983.github.io/)
